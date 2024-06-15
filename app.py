@@ -1,12 +1,16 @@
-from flask import Flask , request
+from flask import Flask , request,render_template
 import json
 from binance_future import *
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
 @app.route("/webhook/binance_future",methods = ["GET","POST"])
 def webhook_binance_future():        
