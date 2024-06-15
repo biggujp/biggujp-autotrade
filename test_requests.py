@@ -1,7 +1,7 @@
 import requests
 r = requests.post('http://127.0.0.1:5000/webhook/binance_future', 
                         json={
-                                "ACTION" : "TPSL SHORT",
+                                "ACTION" : "OPEN LONG",
                                 "SYMBOL" : "BTCUSDT",
                                 "AMOUNT" : 0.09,
                         })
