@@ -7,8 +7,8 @@ app = Flask(__name__)
 def hello_world():
     return "<p>Hello, World!</p>"
 
-@app.route("autohook/binance_future",methods = ["GET","POST"])
-def autohook():        
+@app.route("/webhook/binance_future",methods = ["GET","POST"])
+def webhook_binance_future():        
     if request.method == "GET":
         return "<p> This is route for POST METHOD FOR binance_future !</p>"
     elif request.method == "POST":
