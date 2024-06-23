@@ -6,17 +6,21 @@ binance_future = ccxt.binance({
     'apiKey' : BINANCE_FUTURE_API_KEY,
     'secret' : BINANCE_FUTURE_API_SECRET,
     'options' : {
-        'defaultType' : 'future'
+        'defaultType' : 'future',
+        'adjustForTimeDifference':True
     }
 })
 binance_future.set_sandbox_mode(BINANCE_FUTURE_TESTING)
 
 
-future_balnance = binance_future.fetch_balance()
-my_USDT = future_balnance["USDT"]["free"]
-my_position_size = float(my_USDT) * 0.01
-print("My Balnance : {}".format(my_USDT))
-print("My Position size : {}".format(my_position_size))
+time = binance_future.fetch_time()
+print(binance_future.iso8601(time))
+
+#future_balnance = binance_future.fetch_balance()
+#my_USDT = future_balnance["USDT"]["free"]
+#my_position_size = float(my_USDT) * 0.01
+#print("My Balnance : {}".format(my_USDT))
+#print("My Position size : {}".format(my_position_size))
 
 
 #Place order
