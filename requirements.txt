@@ -1,7 +1,6 @@
 ccxt
 requests
 Flask
-json
 ujson
 websocket-client
 websockets
