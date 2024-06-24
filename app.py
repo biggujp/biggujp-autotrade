@@ -19,12 +19,16 @@ def webhook_binance_future():
         return "<p> This is route for POST METHOD FOR binance_future !</p>"
     elif request.method == "POST":
         # json == dictionary python
-        signal = request.data.decode("utf-8")
-        signal_as_dictionary = json.loads(signal)
-        print(signal_as_dictionary)
+        #signal = request.data.decode("utf-8")
+        signal = json.loads(signal)
+
+        # format data string --> json
+        signal = signal.split("\n")[0] # {'action':'TPSL LONG','exchange':'BINANCE','symbol':'BTCUSDT'}
+        signal = signal.replace("'",'"')
+        signal = json.loads(signal)
         
-        trade_side = signal_as_dictionary["action"]
-        trade_symbol = signal_as_dictionary["symbol"]
+        trade_side = signal["action"]
+        trade_symbol = signal["symbol"]
         trade_amount = 0.044
         
         if "LONG" in trade_side:
