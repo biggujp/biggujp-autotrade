@@ -23,9 +23,9 @@ def webhook_binance_future():
         signal_as_dictionary = json.loads(signal)
         print(signal_as_dictionary)
         
-        trade_side = signal_as_dictionary["ACTION"]
-        trade_symbol = signal_as_dictionary["SYMBOL"]
-        trade_amount = signal_as_dictionary["AMOUNT"]
+        trade_side = signal_as_dictionary["action"]
+        trade_symbol = signal_as_dictionary["symbol"]
+        trade_amount = 0.044
         
         if "LONG" in trade_side:
                 order_long(trade_symbol,trade_amount)
