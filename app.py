@@ -13,9 +13,9 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route('/service')
+@app.route('/autotrade')
 def service():
-    return render_template("service.html")
+    return render_template("autotrade.html")
 
 @app.route("/binance",methods = ["GET","POST"])
 def webhook_binance_future():        
