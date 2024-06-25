@@ -1,9 +1,9 @@
 import requests
-r = requests.post('https://biggujp-webhook-746a56632c2c.herokuapp.com/webhook/binance_future', 
+r = requests.post('https://127.0.0.1:5000/binance', 
                         json={
                                 "action" : "TPSL SHORT",
                                 "symbol" : "BTCUSDT",
-                                "AMOUNT" : 0.04,
+                                "amount" : 0.04,
                         })
 
 print(r.text)
