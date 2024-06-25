@@ -14,7 +14,7 @@ def about():
     return render_template("about.html")
 
 @app.route('/autotrade')
-def service():
+def autotrade():
     return render_template("autotrade.html")
 
 @app.route("/binance",methods = ["GET","POST"])
