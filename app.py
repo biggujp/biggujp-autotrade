@@ -1,7 +1,12 @@
 from binance_future import order_long,order_short,order_tpsl_long,order_tpsl_short
 from flask import Flask,request,render_template
 import json
+from config import *
 import os
+from line_notify import LineNotify
+
+ACCESS_TOKEN = LINE_TOKEN
+notify = LineNotify(ACCESS_TOKEN)
 
 app = Flask(__name__)
 
@@ -23,6 +28,7 @@ def webhook_binance_future():
         return "<p> This is route for POST METHOD FOR binance_future !</p>"
     elif request.method == "POST":
         print("ได้รับคำสั่งซื้อขายจาก tradingview")
+        notify.send("ได้รับคำสั่งซื้อขายจาก tradingview")
         # json == dictionary python
         #signal = request.data.decode("utf-8")
         signal_as_dic = json.loads(request.data) 
@@ -40,17 +46,26 @@ def webhook_binance_future():
         
         if "LONG" in action:
                 order_long(symbol,amount)
+                txt_long = "ส่งคำสั่ง LONG : {} จำนวน {}".format(symbol,amount)
+                print(txt_long)
+                notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
 
                 pass
         
         elif "SHORT" in action:
                 order_short(symbol,amount)
+                txt_short = "ส่งคำสั่ง SHORT : {} จำนวน {}".format(symbol,amount)
+                print(txt_short)
+                notify.send(txt_short)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
                 pass
         
         elif "TPSL LONG" in action:
                 order_tpsl_long(symbol,amount)
+                txt_tpsl = "ส่งคำสั่ง TP/SL LONG : {} จำนวน {}".format(symbol,amount)
+                print(txt_tpsl)
+                notify.send(txt_tpsl)
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
                 pass
         
