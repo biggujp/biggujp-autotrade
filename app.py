@@ -25,8 +25,6 @@ def webhook_binance_future():
         # format data string --> json
         signal = signal.split("\n")[0] # {'action':'TPSL LONG','exchange':'BINANCE','symbol':'BTCUSDT'}
         signal = signal.replace("'",'"')
-        signal = json.loads(signal)
-        
         trade_side = signal["action"]
         trade_symbol = signal["symbol"]
         trade_amount = 0.044
