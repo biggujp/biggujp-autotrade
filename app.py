@@ -13,6 +13,10 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route('/service')
+def service():
+    return render_template("service.html")
+
 @app.route("/binance",methods = ["GET","POST"])
 def webhook_binance_future():        
     if request.method == "GET":
