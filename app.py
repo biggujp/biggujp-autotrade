@@ -1,4 +1,4 @@
-from binance_future import order_long,order_short,order_tpsl_long,order_tpsl_short
+from binance_future import order_long,order_short,order_tpsl_long,order_tpsl_short,cal_amount
 from flask import Flask,request,render_template
 import json
 from config import *
@@ -44,32 +44,36 @@ def webhook_binance_future():
         amount = signal["amount"]
         
         if "LONG" in action:
-                order_long(symbol,amount)
-                txt_long = "ส่งคำสั่ง LONG {} จำนวนสัญญา {}".format(symbol,float(amount))
+                amt = cal_amount(symbol,amount)
+                order_long(symbol,amt)
+                txt_long = "ส่งคำสั่ง LONG {} จำนวนสัญญา {}".format(symbol,float(amt))
                 print(txt_long)
                 notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
                 pass
                 
         elif "SHORT" in action:
-                order_short(symbol,amount)
-                txt_short = "ส่งคำสั่ง SHORT {} จำนวนสัญญา {}".format(symbol,float(amount))
+                amt = cal_amount(symbol,amount)
+                order_short(symbol,amt)
+                txt_short = "ส่งคำสั่ง SHORT {} จำนวนสัญญา {}".format(symbol,float(amt))
                 print(txt_short)
                 notify.send(txt_short)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
                 pass 
                
         elif "TPSL LONG" in action:
-                order_tpsl_long(symbol,amount)
-                txt_tpsl_long = "ส่งคำสั่ง TP/SL LONG {} จำนวนสัญญา {}".format(symbol,float(amount))
+                amt = cal_amount(symbol,amount)
+                order_tpsl_long(symbol,amt)
+                txt_tpsl_long = "ส่งคำสั่ง TP/SL LONG {} จำนวนสัญญา {}".format(symbol,float(amt))
                 print(txt_tpsl_long)
                 notify.send(txt_tpsl_long)
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
                 pass 
                
-        elif "TPSL SHORT" in action:                
-                order_tpsl_short(symbol,float(amount))
-                txt_tpsl_short = "ส่งคำสั่ง TP/SL SHORT {} จำนวนสัญญา {}".format(symbol,float(amount))
+        elif "TPSL SHORT" in action:
+                amt = cal_amount(symbol,amount)                
+                order_tpsl_short(symbol,amt)
+                txt_tpsl_short = "ส่งคำสั่ง TP/SL SHORT {} จำนวนสัญญา {}".format(symbol,float(amt))
                 print(txt_tpsl_short)
                 notify.send(txt_tpsl_short)
                 # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker

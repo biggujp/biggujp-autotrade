@@ -23,6 +23,8 @@ print(binance_future.iso8601(time))
 #print("My Position size : {}".format(my_position_size))
 
 
+
+
 #Place order
 #margin Risk per trade 1% => my_position_size
 #3% stoploss fix (previous candles low)
@@ -44,6 +46,15 @@ print(binance_future.iso8601(time))
 #     side="buy",
 #     amount=calculation_amount
 # )
+
+def cal_amount(symbols,position_size):
+    current_price = binance_future.fetch_last_prices([symbols])
+    current_price = float(list(current_price.values())[0]["price"])
+    my_leverage = 20
+    binance_future.set_leverage(my_leverage,symbols)
+    cal_amount = position_size*my_leverage/current_price
+    return float(cal_amount)
+
 
 def order_long(symbols,amount):
     binance_future.create_order(
