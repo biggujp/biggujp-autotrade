@@ -45,35 +45,31 @@ def webhook_binance_future():
         amount = signal["amount"]
         
         if "LONG" in action:
-                order_long(symbol,amount)
-                txt_long = "ส่งคำสั่ง LONG : {} จำนวน {}".format(symbol,float(amount))
-                print(txt_long)
-                notify.send(txt_long)
+            order_long(symbol,amount)
+            txt_long = "ส่งคำสั่ง LONG : {} จำนวน {}".format(symbol,float(amount))
+            print(txt_long)
+            notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
-
-                pass
+            pass
         
         elif "SHORT" in action:
-                order_short(symbol,amount)
-                txt_short = "ส่งคำสั่ง SHORT : {} จำนวน {}".format(symbol,float(amount))
-                print(txt_short)
-                notify.send(txt_short)
+            order_short(symbol,amount)
+            txt_short = "ส่งคำสั่ง SHORT : {} จำนวน {}".format(symbol,float(amount))
+            print(txt_short)
+            notify.send(txt_short)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
-                pass
-        
+            pass
         elif "TPSL LONG" in action:
-                order_tpsl_long(symbol,amount)
-                txt_tpsl = "ส่งคำสั่ง TP/SL LONG : {} จำนวน {}".format(symbol,float(amount))
-                print(txt_tpsl)
-                notify.send(txt_tpsl)
+            order_tpsl_long(symbol,amount)
+            txt_tpsl = "ส่งคำสั่ง TP/SL LONG : {} จำนวน {}".format(symbol,float(amount))
+            print(txt_tpsl)
+            notify.send(txt_tpsl)
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
-                pass
-        
+            pass
         elif "TPSL SHORT" in action:
-                order_tpsl_short(symbol,float(amount))
-                # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
-                pass
-        
+            order_tpsl_short(symbol,float(amount))
+            # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
+            pass
         return "200"
     
 if __name__ == "__main__":
