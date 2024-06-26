@@ -1,5 +1,5 @@
 import requests
-r = requests.post('https://127.0.0.1:5000/binance', 
+r = requests.post('https://10c2-58-8-212-139.ngrok-free.app/binance', 
                         json={
                                 "action" : "TPSL SHORT",
                                 "symbol" : "BTCUSDT",
@@ -7,3 +7,5 @@ r = requests.post('https://127.0.0.1:5000/binance',
                         })
 
 print(r.text)
+
+
