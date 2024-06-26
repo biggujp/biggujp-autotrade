@@ -47,16 +47,9 @@ print(binance_future.iso8601(time))
 #     amount=calculation_amount
 # )
 
-def cal_amount(symbols,position_size):
-    current_price = binance_future.fetch_last_prices([symbols])
-    current_price = float(list(current_price.values())[0]["price"])
+def order_long(symbols,amount):
     my_leverage = 20
     binance_future.set_leverage(my_leverage,symbols)
-    cal_amount = position_size*my_leverage/current_price
-    return float(cal_amount)
-
-
-def order_long(symbols,amount):
     binance_future.create_order(
         symbol=symbols,
         type="market",
@@ -65,6 +58,8 @@ def order_long(symbols,amount):
         )
     
 def order_tpsl_long(symbols,amount):
+    my_leverage = 20
+    binance_future.set_leverage(my_leverage,symbols)
     binance_future.create_order(
         symbol=symbols,
         type="market",
@@ -73,6 +68,8 @@ def order_tpsl_long(symbols,amount):
         )
         
 def order_short(symbols,amount):
+    my_leverage = 20
+    binance_future.set_leverage(my_leverage,symbols)
     binance_future.create_order(
         symbol=symbols,
         type="market",
@@ -81,6 +78,8 @@ def order_short(symbols,amount):
         )
     
 def order_tpsl_short(symbols,amount):
+    my_leverage = 20
+    binance_future.set_leverage(my_leverage,symbols)
     binance_future.create_order(
         symbol=symbols,
         type="market",
