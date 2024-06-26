@@ -51,7 +51,6 @@ def webhook_binance_future():
             notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
             pass
-        
         elif "SHORT" in action:
             order_short(symbol,amount)
             txt_short = "ส่งคำสั่ง SHORT : {} จำนวน {}".format(symbol,float(amount))
@@ -68,7 +67,6 @@ def webhook_binance_future():
             pass
         elif "TPSL SHORT" in action:
             order_tpsl_short(symbol,float(amount))
-            # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
             pass
         return "200"
     
