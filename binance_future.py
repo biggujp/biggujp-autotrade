@@ -54,7 +54,7 @@ def order_long(symbols,amount):
         symbol=symbols,
         type="market",
         side="buy",
-        amount=amount,
+        amount=float(amount),
         )
     
 def order_tpsl_long(symbols,amount):
@@ -64,7 +64,7 @@ def order_tpsl_long(symbols,amount):
         symbol=symbols,
         type="market",
         side="sell",
-        amount=amount,
+        amount=float(amount),
         )
         
 def order_short(symbols,amount):
@@ -74,7 +74,7 @@ def order_short(symbols,amount):
         symbol=symbols,
         type="market",
         side="sell",
-        amount=amount,
+        amount=float(amount),
         )
     
 def order_tpsl_short(symbols,amount):
@@ -84,6 +84,6 @@ def order_tpsl_short(symbols,amount):
         symbol=symbols,
         type="market",
         side="buy",
-        amount=amount,
+        amount=float(amount),
         )
 
