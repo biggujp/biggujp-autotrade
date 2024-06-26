@@ -46,34 +46,32 @@ def webhook_binance_future():
         
         if "LONG" in action:
                 order_long(symbol,amount)
-                txt_long = "ส่งคำสั่ง LONG : {} จำนวน {}".format(symbol,float(amount))
+                txt_long = "ส่งคำสั่ง LONG {} จำนวนสัญญา {}".format(symbol,float(amount))
                 print(txt_long)
                 notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
-
-                pass
-        
+                pass        
         elif "SHORT" in action:
                 order_short(symbol,amount)
-                txt_short = "ส่งคำสั่ง SHORT : {} จำนวน {}".format(symbol,float(amount))
+                txt_short = "ส่งคำสั่ง SHORT {} จำนวนสัญญา {}".format(symbol,float(amount))
                 print(txt_short)
                 notify.send(txt_short)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
-                pass
-        
+                pass        
         elif "TPSL LONG" in action:
                 order_tpsl_long(symbol,amount)
-                txt_tpsl = "ส่งคำสั่ง TP/SL LONG : {} จำนวน {}".format(symbol,float(amount))
-                print(txt_tpsl)
-                notify.send(txt_tpsl)
+                txt_tpsl_long = "ส่งคำสั่ง TPSL LONG {} จำนวนสัญญา {}".format(symbol,float(amount))
+                print(txt_tpsl_long)
+                notify.send(txt_tpsl_long)
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
-                pass
-        
-        elif "TPSL SHORT" in action:
+                pass        
+        elif "TPSL SHORT" in action:                
                 order_tpsl_short(symbol,float(amount))
+                txt_tpsl_short = "ส่งคำสั่ง TPSL LONG {} จำนวนสัญญา {}".format(symbol,float(amount))
+                print(txt_tpsl_short)
+                notify.send(txt_tpsl_short)
                 # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
-                pass
-        
+                pass        
         return "200"
     
 if __name__ == "__main__":
