@@ -66,7 +66,7 @@ def webhook_binance_future():
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
                 pass 
                
-        elif "TPSL SHORT" in action:             
+        elif "TPSLS" in action:             
                 order_tpsl_short(symbol,amount)
                 txt_tpsl_short = "ส่งคำสั่ง TP/SL SHORT {} จำนวนสัญญา {}".format(symbol,amount)
                 print(txt_tpsl_short)
