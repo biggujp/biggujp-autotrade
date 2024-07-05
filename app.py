@@ -44,7 +44,7 @@ def webhook_binance_future():
         
         if "LONG" in action:
                 order_long(symbol,amount)
-                txt_long = "ส่งคำสั่ง LONG {} จำนวนสัญญา {}".format(symbol,amount)
+                txt_long = "【ส่งคำสั่ง】LONG : {} จำนวนสัญญา : {}".format(symbol,amount)
                 print(txt_long)
                 notify.send(txt_long)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาLONG ส่งไปที่ Exchange , Broker
@@ -52,7 +52,7 @@ def webhook_binance_future():
                 
         elif "SHORT" in action:
                 order_short(symbol,amount)
-                txt_short = "ส่งคำสั่ง SHORT {} จำนวนสัญญา {}".format(symbol,amount)
+                txt_short = "【ส่งคำสั่ง】SHORT : {} จำนวนสัญญา : {}".format(symbol,amount)
                 print(txt_short)
                 notify.send(txt_short)
                 # เรียกฟังก์ชั่นในการเปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
@@ -60,7 +60,7 @@ def webhook_binance_future():
                
         elif "TPSLL" in action:
                 order_tpsl_long(symbol,amount)
-                txt_tpsl_long = "ส่งคำสั่ง TP/SL LONG {} จำนวนสัญญา {}".format(symbol,amount)
+                txt_tpsl_long = "【ส่งคำสั่ง】TP/SL LONG : {} จำนวนสัญญา : {}".format(symbol,amount)
                 print(txt_tpsl_long)
                 notify.send(txt_tpsl_long)
                 # เรียกฟังก์ชั่นในการปิดสัญญาLONG ส่งไปที่ Exchange , Broker
@@ -68,7 +68,7 @@ def webhook_binance_future():
                
         elif "TPSLS" in action:             
                 order_tpsl_short(symbol,amount)
-                txt_tpsl_short = "ส่งคำสั่ง TP/SL SHORT {} จำนวนสัญญา {}".format(symbol,amount)
+                txt_tpsl_short = "【ส่งคำสั่ง】TP/SL SHORT : {} จำนวนสัญญา : {}".format(symbol,amount)
                 print(txt_tpsl_short)
                 notify.send(txt_tpsl_short)
                 # เรียกฟังก์ชั่นในการปิดสัญญาSHORT ส่งไปที่ Exchange , Broker
